@@ -4,11 +4,11 @@ function setup {
     target=$1
     link=$2
 
-    ln -s $target $link
-    vim "+source $link" &
+    ln -s $target $link 1>&2 2>/dev/null
+    vim "+source $link" "+PluginInstall" "+qall" &
 
     pid=$!
-    kill -9 $pid >/dev/null &>/dev/null
+    kill -9 $pid 1>&2 2>/dev/null
 
     echo "Done"
 }

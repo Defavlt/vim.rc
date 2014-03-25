@@ -6,7 +6,7 @@ let pluginPath = '~/src/vim/bundle'
 let pluginConf = '~/src/vim/bundle.d/'
 
 " Include vundle
-let &rtp.= ',' . pluginPath . '/vundle/'
+let &rtp.= ',' . pluginPath . '/Vundle.vim/'
 call vundle#rc(pluginPath)
 
 for plugin in split(globpath(pluginConf, "*.*"), '\n')
