@@ -2,8 +2,10 @@ set nocompatible
 filetype off
 
 " Set paths
-let pluginPath = '~/src/vim/bundle'
-let pluginConf = '~/src/vim/bundle.d/'
+" We go up a step since this is a config file and thus we're in rc.d directory
+let root = expand('<sfile>:p:h') . '/..'
+let pluginPath = root . '/bundle'
+let pluginConf = root . '/bundle.d'
 
 " Include vundle
 let &rtp.= ',' . pluginPath . '/Vundle.vim/'
