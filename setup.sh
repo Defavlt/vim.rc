@@ -1,8 +1,8 @@
 #!/bin/bash
 
 function setup {
-    target=$1
-    link=$2
+    target=`pwd`/rc.vim
+    link=~/.vimrc
 
     ln -s $target $link 1>&2 2>/dev/null
     vim "+source $link" "+PluginInstall" "+qall" &
@@ -13,9 +13,4 @@ function setup {
     echo "Done"
 }
 
-if [ $# -eq 2 ];
-then
-    setup $1 $2
-else
-    printf "Usage: $0 TARGET LINK\n"
-fi
+setup
