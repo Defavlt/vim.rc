@@ -3,29 +3,31 @@ filetype off
 
 " Set paths
 " We go up a step since this is a config file and thus we're in rc.d directory
-let root = expand('<sfile>:p:h') . '/..'
+let root = expand('<sfile>:p:h:h')
 let pluginPath = root . '/bundle'
-let pluginConf = root . '/bundle.d'
+let pluginConf = root . '/bundle.d/'
+let vundlePath = '/Vundle.vim/'
 
 " Include vundle
-let &rtp.= ',' . pluginPath . '/Vundle.vim/'
-call vundle#rc(pluginPath)
+let &rtp.= ',' . pluginPath . vundlePath
+call vundle#begin(pluginPath)
 
-for plugin in split(globpath(pluginConf, "*.*"), '\n')
-    let expanded = fnamemodify(plugin, ':t')
-    let info = split(expanded, '\.')
+for repo in split(globpath(pluginConf, "*"), '\n')
 
-    if len(info) > 2
+    if vundlePath == repo
         continue
     endif
+    
+    for plugin in readfile(repo)
 
-    let plugin=join(info, "/")
+        let _repo = fnamemodify(repo, ':t')
+        if empty(plugin)
+            continue
+        endif
 
-    if empty(plugin)
-        continue
-    endif
-
-    Plugin plugin
+        Plugin _repo . '/' . plugin
+    endfor
 endfor
 
+call vundle#end()
 filetype plugin indent on
