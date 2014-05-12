@@ -21,7 +21,7 @@ Vundle plugin installation
 2. Either run vi/m +PluginInstall +qall, or :PluginInstall from vi/m.
 3. Profit!
 
-Not about plugin managers
+Note about plugin managers
 -------------------------
 
 Although this isn't tested, it's fully possible that you might be able to use other plugin managers.
