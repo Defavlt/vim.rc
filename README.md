@@ -20,3 +20,10 @@ Vundle plugin installation
 1. Create a plugin file in ./bundle.d (name it after the repo of the plugin, while you put a plugin on each line in the file).
 2. Either run vi/m +PluginInstall +qall, or :PluginInstall from vi/m.
 3. Profit!
+
+Not about plugin managers
+-------------------------
+
+Although this isn't tested, it's fully possible that you might be able to use other plugin managers.
+
+Just put a configuration script in rc.d and point the plugin manager to bundle.d.
